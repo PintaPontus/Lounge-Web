@@ -1,0 +1,26 @@
+:host {
+  background-color: slateblue;
+  box-sizing: border-box;
+  height: 3rem;
+  display: flex;
+  align-content: center;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 10px;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+:host:hover {
+  cursor: pointer;
+}
+
+img {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}

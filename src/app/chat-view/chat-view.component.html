@@ -1,0 +1,3 @@
+<app-chat-header>{{ this.selectedId() }}</app-chat-header>
+<app-chat-scroll [messages]="this.connection?.messages"></app-chat-scroll>
+<app-chat-input (send)="this.send($event)"></app-chat-input>

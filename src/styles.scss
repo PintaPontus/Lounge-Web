@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+//noinspection CssOverwrittenProperties
+body {
+  background-color: black;
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  width: 100svw;
+  height: 100svh;
+  margin: 0;
+  padding: 0;
+}

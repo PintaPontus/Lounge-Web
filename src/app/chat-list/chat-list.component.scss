@@ -1,0 +1,12 @@
+//noinspection CssOverwrittenProperties
+:host {
+  background-color: darkslategrey;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-items: stretch;
+  align-items: stretch;
+  gap: 3px;
+  padding: 3px;
+}
