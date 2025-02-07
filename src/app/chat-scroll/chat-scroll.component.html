@@ -1,4 +1,5 @@
 @for (message of this.messages ? this.messages() : []; track $index) {
-  <div class="text left">{{ message }}</div>
-  <div class="text right">{{ message }}</div>
+  <div [ngClass]="{'text': true, 'right': isMe(message.sender), 'left': !isMe(message.sender)}">
+    {{ message.sender }} - {{ message.content }}
+  </div>
 }

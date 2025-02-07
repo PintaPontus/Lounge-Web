@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:lounge": "node dist/lounge/server/server.mjs"
+    "serve:ssr:lounge": "bun dist/lounge/server/server.mjs"
   },
   "private": true,
   "dependencies": {

@@ -10,12 +10,18 @@
   align-items: center;
   justify-content: center;
   height: 10vh;
+  margin: 5px;
+  padding: 0.5rem;
 }
 
 .left {
   align-self: flex-start;
+  border-radius: 0 10px 10px 10px;
+  background-color: darkslategrey;
 }
 
 .right {
   align-self: flex-end;
+  border-radius: 10px 0 10px 10px;
+  background-color: cadetblue;
 }
