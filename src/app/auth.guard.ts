@@ -2,8 +2,7 @@ import {CanActivateFn, Router} from '@angular/router';
 import {AuthService} from './auth.service';
 import {inject} from '@angular/core';
 
-// noinspection JSUnusedLocalSymbols
-export const authGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = (_route, _state) => {
     const authService = inject(AuthService);
     if (authService.isLogged()) {
         return true;

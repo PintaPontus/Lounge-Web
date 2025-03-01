@@ -1,6 +1,6 @@
 import {Component, OnInit, signal} from '@angular/core';
 import {MessagesService} from '../messages.service';
-import {ChatConnection} from '../interfaces/Chat';
+import {ChatConnection, ChatMessageReceive, ChatMessageSend} from '../interfaces/Chat';
 import {ChatInputComponent} from '../chat-input/chat-input.component';
 import {ChatHeaderComponent} from '../chat-header/chat-header.component';
 import {ChatScrollComponent} from '../chat-scroll/chat-scroll.component';
@@ -41,11 +41,13 @@ export class ChatViewComponent implements OnInit {
   }
 
   send(content: string) {
-    let newMessage = {
-      sender: this.authService.getUserId(),
-      content: content
-    }
-    this.connection?.messages.update(l => [...l, newMessage]);
-    this.connection?.send.next(newMessage);
+      this.connection?.messages.update(l => [...l, {
+          sender: this.authService.getUserId(),
+          content: content,
+          date: new Date(),
+      } as ChatMessageReceive]);
+      this.connection?.send.next({
+          content: content
+      } as ChatMessageSend);
   }
 }

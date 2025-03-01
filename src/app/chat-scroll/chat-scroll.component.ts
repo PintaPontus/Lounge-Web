@@ -1,7 +1,7 @@
 import {Component, Input, Signal} from '@angular/core';
-import {ChatMessage} from '../interfaces/Chat';
 import {NgClass} from '@angular/common';
 import {AuthService} from '../auth.service';
+import {ChatMessageReceive} from '../interfaces/Chat';
 
 @Component({
   selector: 'app-chat-scroll',
@@ -12,7 +12,7 @@ import {AuthService} from '../auth.service';
   styleUrl: './chat-scroll.component.scss'
 })
 export class ChatScrollComponent {
-  @Input() messages!: Signal<ChatMessage[]> | undefined;
+    @Input() messages!: Signal<ChatMessageReceive[]> | undefined;
 
   constructor(private authService: AuthService) {
   }

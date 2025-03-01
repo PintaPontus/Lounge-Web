@@ -1,5 +1,6 @@
 @for (message of this.messages ? this.messages() : []; track $index) {
   <div [ngClass]="{'text': true, 'right': isMe(message.sender), 'left': !isMe(message.sender)}">
-    {{ message.sender }} - {{ message.content }}
+      {{ message.sender }} - {{ message.content }} - {{ message.date.getDate() }}/{{ message.date.getMonth() }}
+      /{{ message.date.getFullYear() }}
   </div>
 }
