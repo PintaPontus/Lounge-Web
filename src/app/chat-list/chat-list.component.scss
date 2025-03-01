@@ -1,22 +1,22 @@
 //noinspection CssOverwrittenProperties
 :host {
-  background-color: darkslategrey;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  color: white;
-  justify-items: stretch;
-  align-items: stretch;
-  gap: 3px;
-  padding: 3px;
+    background-color: darkslategrey;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-items: stretch;
+    align-items: stretch;
+    gap: 3px;
+    padding: 3px;
 }
 
 .title {
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  cursor: pointer;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
 }
 

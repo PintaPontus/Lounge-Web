@@ -1,22 +1,22 @@
 //noinspection CssOverwrittenProperties
 :host {
-  background-color: black;
-  display: flex;
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
-  width: 100svw;
-  height: 100svh;
-  justify-content: stretch;
-  align-items: stretch;
-  margin: 0;
-  padding: 0;
+    background-color: black;
+    display: flex;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    width: 100svw;
+    height: 100svh;
+    justify-content: stretch;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
 }
 
 app-chat-list {
-  flex: 1;
+    flex: 1;
 }
 
 .content {
-  flex: 5;
+    flex: 5;
 }

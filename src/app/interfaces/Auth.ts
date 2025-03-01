@@ -1,9 +1,9 @@
 export interface AuthRequest {
-  username: string;
-  password: string;
+    username: string;
+    password: string;
 }
 
 export interface AuthResponse {
-  userId: number;
-  token: string;
+    userId: number;
+    token: string;
 }

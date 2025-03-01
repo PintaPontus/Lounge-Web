@@ -1,18 +1,18 @@
 :host {
-  display: flex;
-  text-align: center;
-  justify-content: stretch;
-  align-items: stretch;
+    display: flex;
+    text-align: center;
+    justify-content: stretch;
+    align-items: stretch;
 }
 
 input {
-  flex: 19;
+    flex: 19;
 }
 
 input:focus {
-  outline: none;
+    outline: none;
 }
 
 button {
-  flex: 1;
+    flex: 1;
 }
