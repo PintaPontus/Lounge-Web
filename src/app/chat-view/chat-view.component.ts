@@ -37,7 +37,8 @@ export class ChatViewComponent implements OnInit {
   }
 
   async startConnection(id: number) {
-    this.connection = await this.socketService.connect(`messages`, id);
+      let lastMessages = await this.socketService.fetch(id, 0, 10);
+      this.connection = await this.socketService.connect(id, lastMessages);
   }
 
   send(content: string) {

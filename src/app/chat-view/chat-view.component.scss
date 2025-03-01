@@ -1,26 +1,27 @@
 //noinspection CssOverwrittenProperties
 :host {
-  background-color: gray;
-  box-sizing: border-box;
-  display: flex;
-  color: white;
-  height: 100vh;
-  height: 100svh;
-  flex-direction: column;
+    background-color: gray;
+    box-sizing: border-box;
+    display: flex;
+    color: white;
+    height: 100vh;
+    height: 100svh;
+    flex-direction: column;
 }
 
 app-chat-header {
-  background-color: darkcyan;
-  flex: 2;
+    background-color: darkcyan;
+    flex: 2;
 }
 
 app-chat-scroll {
-  flex: 17;
-  overflow-y: scroll;
+    flex: 17;
+    overflow-y: scroll;
 }
 
 app-chat-input {
-  background-color: darkcyan;
-  flex: 1;
+    background-color: darkcyan;
+    flex: 1;
+    min-height: 2em;
 }
 

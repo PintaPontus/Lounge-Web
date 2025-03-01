@@ -3,22 +3,42 @@ import {ChatAuth, ChatConnection, ChatMessageReceive, ChatMessageSend} from './i
 import {Subject} from 'rxjs';
 import {environment} from '../environments/environment';
 import {AuthService} from './auth.service';
+import {HttpService} from './http.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class MessagesService {
 
-    constructor(private authService: AuthService) {
+    private FETCH_MESSAGES = 'last-direct-messages';
+    private RT_MESSAGES = 'messages';
+
+    constructor(private authService: AuthService, private http: HttpService) {
     }
 
-    async connect(path: string, recipient: number) {
+    async fetch(recipient: number, page: number, size: number): Promise<ChatMessageReceive[]> {
+        const messages = await
+            this.http.get<ChatMessageReceive[]>(
+                this.FETCH_MESSAGES,
+                {
+                    'recipient': recipient,
+                    'page': page,
+                    'size': size,
+                }
+            );
+        messages.forEach(message => {
+            message.date = new Date(message.date);
+        });
+        return messages;
+    }
+
+    async connect(recipient: number, lastMessages: ChatMessageReceive[]) {
         return new Promise<ChatConnection>((resolve, reject) => {
-            const socketConnection = new WebSocket(`${environment.apiUrl}/${path}`);
+            const socketConnection = new WebSocket(`${environment.apiUrl}/${(this.RT_MESSAGES)}`);
 
             socketConnection.onopen = () => {
                 const send = new Subject<ChatMessageSend>();
-                const listen = signal<ChatMessageReceive[]>([]);
+                const listen = signal<ChatMessageReceive[]>(lastMessages);
 
                 socketConnection.send(JSON.stringify({
                     authToken: this.authService.getAuthToken(),
@@ -43,7 +63,6 @@ export class MessagesService {
                         }
                     }
                     message.date = new Date(message.date)
-                    message.content = `ESTERNO: ${message.content}`;
                     listen.update(l => [...l, message]);
                     console.log(listen());
                 })
