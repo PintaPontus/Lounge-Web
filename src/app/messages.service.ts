@@ -32,13 +32,13 @@ export class MessagesService {
         return messages;
     }
 
-    async connect(recipient: number, lastMessages: ChatMessageReceive[]) {
+    async connect(recipient: number) {
         return new Promise<ChatConnection>((resolve, reject) => {
             const socketConnection = new WebSocket(`${environment.apiUrl}/${(this.RT_MESSAGES)}`);
 
             socketConnection.onopen = () => {
                 const send = new Subject<ChatMessageSend>();
-                const listen = signal<ChatMessageReceive[]>(lastMessages);
+                const listen = signal<ChatMessageReceive[]>([]);
 
                 socketConnection.send(JSON.stringify({
                     authToken: this.authService.getAuthToken(),

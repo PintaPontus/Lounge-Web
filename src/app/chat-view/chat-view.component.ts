@@ -23,7 +23,7 @@ export class ChatViewComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private socketService: MessagesService,
+        private messagesService: MessagesService,
         private route: ActivatedRoute
     ) {
     }
@@ -37,18 +37,19 @@ export class ChatViewComponent implements OnInit {
     }
 
     async startConnection(id: number) {
-        let lastMessages = await this.socketService.fetch(id, 0, 10);
-        this.connection = await this.socketService.connect(id, lastMessages);
+        this.connection = await this.messagesService.connect(id);
     }
 
     send(content: string) {
-        this.connection?.messages.update(l => [...l, {
-            sender: this.authService.getUserId(),
-            content: content,
-            date: new Date(),
-        } as ChatMessageReceive]);
-        this.connection?.send.next({
-            content: content
-        } as ChatMessageSend);
+        if (content && content !== '') {
+            this.connection?.messages.update(l => [...l, {
+                sender: this.authService.getUserId(),
+                content: content,
+                date: new Date(),
+            } as ChatMessageReceive]);
+            this.connection?.send.next({
+                content: content
+            } as ChatMessageSend);
+        }
     }
 }

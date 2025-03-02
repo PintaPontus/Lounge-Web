@@ -13,7 +13,6 @@ export class ChatInputComponent {
     message = '';
     send = output<string>();
 
-
     onEnter() {
         this.send.emit(this.message);
         this.message = ''
