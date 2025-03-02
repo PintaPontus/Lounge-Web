@@ -10,8 +10,8 @@ import {HttpService} from './http.service';
 })
 export class MessagesService {
 
-    private FETCH_MESSAGES = 'last-direct-messages';
-    private RT_MESSAGES = 'messages';
+    private FETCH_MESSAGES = 'direct-messages';
+    private SOCKET_RT_MESSAGES = 'messages';
 
     constructor(private authService: AuthService, private http: HttpService) {
     }
@@ -34,7 +34,7 @@ export class MessagesService {
 
     async connect(recipient: number) {
         return new Promise<ChatConnection>((resolve, reject) => {
-            const socketConnection = new WebSocket(`${environment.apiUrl}/${(this.RT_MESSAGES)}`);
+            const socketConnection = new WebSocket(`${environment.apiUrl}/${(this.SOCKET_RT_MESSAGES)}`);
 
             socketConnection.onopen = () => {
                 const send = new Subject<ChatMessageSend>();
