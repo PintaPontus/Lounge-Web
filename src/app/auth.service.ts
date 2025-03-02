@@ -14,22 +14,29 @@ export class AuthService {
         const response = await fetch(
             `${environment.apiUrl}/login`,
             {
-                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                }),
+                method: 'POST',
                 body: JSON.stringify({
                     username,
                     password
-                } as AuthRequest)
+                } as AuthRequest),
             }
         );
 
+        console.log(response);
+
         const authResponseBody = await response.json() as AuthResponse
+
+        console.log(authResponseBody);
 
         sessionStorage.setItem(this.USER_ID_KEY, String(authResponseBody.userId));
         sessionStorage.setItem(this.AUTH_TOKEN_KEY, authResponseBody.token);
     }
 
     isLogged() {
-        return sessionStorage && sessionStorage.getItem(this.USER_ID_KEY) && sessionStorage.getItem(this.AUTH_TOKEN_KEY);
+        return sessionStorage.getItem(this.USER_ID_KEY) && sessionStorage.getItem(this.AUTH_TOKEN_KEY);
     }
 
     getUserId(): number {

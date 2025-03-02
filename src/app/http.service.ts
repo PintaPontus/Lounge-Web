@@ -20,15 +20,13 @@ export class HttpService {
             [key: string]: string | null;
         }
     ): Promise<T> {
-        const httpHeaders = this.generateHeaders(headers);
-
         const httpParams = this.generateQueryParams(params);
 
         const response = await fetch(
             `${environment.apiUrl}/${path}${httpParams ? '?' + httpParams.toString() : ''}`,
             {
                 method: 'GET',
-                headers: httpHeaders
+                headers: this.generateHeaders(headers)
             }
         );
 
@@ -43,15 +41,14 @@ export class HttpService {
         }
     ): Promise<T> {
         const httpHeaders = this.generateHeaders(headers);
-
-        const httpBody = JSON.stringify(body);
+        httpHeaders.set('Content-Type', 'application/json');
 
         const response = await fetch(
             `${environment.apiUrl}/${path}`,
             {
-                method: 'GET',
+                method: 'POST',
                 headers: httpHeaders,
-                body: httpBody
+                body: JSON.stringify(body)
             }
         );
 
